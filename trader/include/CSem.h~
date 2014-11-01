@@ -1,0 +1,18 @@
+#ifndef CSEM_H
+#define CSEM_H
+#include<iostream>
+#include<sys/sem.h>
+
+using namespace std;
+
+class CSem{
+public:
+	CSem(int value = 0);
+	~CSem();
+	
+	sem_p();
+	sem_v();
+private:
+	int m_SemId;
+};
+#endif

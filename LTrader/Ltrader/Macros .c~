@@ -1,0 +1,7 @@
+#include "Macros.h"
+int main()
+{
+ int *p;
+ MALLOC(p,3*sizeof(int));
+ return 0;
+} 

@@ -1,0 +1,6 @@
+#include<stdio.h>
+int main()
+{
+	cout<<"这是主函数\r\n"<<endl;
+	return 0;
+}

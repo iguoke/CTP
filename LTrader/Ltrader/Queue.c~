@@ -1,0 +1,24 @@
+#include "Queue.h"
+void showqueue(int e) 
+{
+  printf("elem= %d; ",e);
+}
+int main()
+{
+  Q_TYPE_DEFINE(int);
+  Q_TYPE(int) queue;
+  CreateQueue(queue,int);
+  for(int x=1;x<=100;x++)
+   {
+    if (x%3!=0)
+     {    
+      PushQueue(queue,int,x);
+     }
+    else
+     {
+       printf("delete:%d\n",PopQueue(queue));
+     }
+   }
+  TraverseQueue(queue,int,showqueue);
+return 0;
+}

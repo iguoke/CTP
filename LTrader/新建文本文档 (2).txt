@@ -1,0 +1,13 @@
+struct MqlDateTime//date time分开
+  {
+   int year;           // Year
+   int mon;            // Month
+   int day;            // Day
+   int hour;           // Hour
+   int min;            // Minutes
+   int sec;            // Seconds
+   Microsec
+   int day_of_week;    // Day of week (0-Sunday, 1-Monday, ... ,6-Saturday)
+   int day_of_year;    // Day number of the year (January 1st is assigned the number value of zero)
+  };
+ 文件读写 ：输出运行日志 输出错误日志  
