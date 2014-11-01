@@ -11,7 +11,7 @@ typedef  struct
   //char *formt;
 } string; 
 Q_TYPE_DEFINE(string);
-void Print(Q_TYPE(string),const char *addr,const char *fmt,...);
+void Print(Q_TYPE(string) *,const char *addr,const char *fmt,...);
 /*{
 
  int i=0;
