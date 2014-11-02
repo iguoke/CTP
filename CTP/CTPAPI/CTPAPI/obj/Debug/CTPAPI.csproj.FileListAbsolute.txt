@@ -1,0 +1,7 @@
+F:\myc#\CTP\CTPAPI\CTPAPI\bin\Debug\CTPAPI.dll
+F:\myc#\CTP\CTPAPI\CTPAPI\bin\Debug\CTPAPI.pdb
+F:\myc#\CTP\CTPAPI\CTPAPI\obj\Debug\CTPAPI.dll
+F:\myc#\CTP\CTPAPI\CTPAPI\obj\Debug\CTPAPI.pdb
+F:\myc#\CTP\CTPAPI\CTPAPI\obj\Debug\ResolveAssemblyReference.cache
+F:\myc#\CTP\lib\CTPAPI.dll
+F:\myc#\CTP\lib\CTPAPI.pdb

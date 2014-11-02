@@ -1,0 +1,11 @@
+F:\myc#\CTP\Fut\test\bin\Debug\test.exe
+F:\myc#\CTP\Fut\test\bin\Debug\test.pdb
+F:\myc#\CTP\Fut\test\bin\Debug\DeomStrategy.dll
+F:\myc#\CTP\Fut\test\bin\Debug\Fut.dll
+F:\myc#\CTP\Fut\test\bin\Debug\DeomStrategy.pdb
+F:\myc#\CTP\Fut\test\bin\Debug\Fut.pdb
+F:\myc#\CTP\Fut\test\obj\x86\Debug\test.exe
+F:\myc#\CTP\Fut\test\obj\x86\Debug\test.pdb
+F:\myc#\CTP\Fut\test\bin\Debug\CTPAPI.pdb
+F:\myc#\CTP\Fut\test\bin\Debug\CTPAPI.dll
+F:\myc#\CTP\Fut\test\obj\x86\Debug\ResolveAssemblyReference.cache

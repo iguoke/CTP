@@ -1,0 +1,5 @@
+F:\myc#\CTP\lib\CTPAPI.dll
+F:\myc#\CTP\lib\CTPAPI.pdb
+F:\myc#\CTP\CTPAPI\CTPAPI\obj\Release\CTPAPI.dll
+F:\myc#\CTP\CTPAPI\CTPAPI\obj\Release\CTPAPI.pdb
+F:\myc#\CTP\CTPAPI\CTPAPI\obj\Release\ResolveAssemblyReference.cache

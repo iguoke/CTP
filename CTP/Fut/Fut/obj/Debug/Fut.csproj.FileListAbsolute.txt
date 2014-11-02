@@ -1,0 +1,7 @@
+F:\myc#\CTP\Fut\Fut\bin\Debug\Fut.dll
+F:\myc#\CTP\Fut\Fut\bin\Debug\Fut.pdb
+F:\myc#\CTP\Fut\Fut\obj\Debug\Fut.dll
+F:\myc#\CTP\Fut\Fut\obj\Debug\Fut.pdb
+F:\myc#\CTP\Fut\Fut\bin\Debug\CTPAPI.dll
+F:\myc#\CTP\Fut\Fut\bin\Debug\CTPAPI.pdb
+F:\myc#\CTP\Fut\Fut\obj\Debug\ResolveAssemblyReference.cache

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+<broker BrokerID="20000" BrokerName="永安期货">
+  <Server>
+    <Trade>
+      <item>180.169.124.109:41205</item>
+    </Trade>
+    <MarketData>
+      <item>  </item>
+    </MarketData>
+  </Server>
+  <invostors>
+    <invostor>
+      <id>202800020</id>
+      <pwssword>162510</pwssword>
+    </invostor>
+    <invostor>
+      <id>202800020</id>
+      <pwssword>162510</pwssword>
+    </invostor>
+  </invostors>
+</broker>
+
+<broker BrokerID="20001" BrokerName="永安期货">
+  <Server>
+    <Trade>
+      <item>180.169.124.109:41205</item>
+    </Trade>
+    <MarketData>
+      <item>  </item>
+    </MarketData>
+  </Server>
+  <invostors>
+
+    <invostor>
+      <id>8888</id>
+      <pwssword>000</pwssword>
+    </invostor>
+  </invostors>
+</broker>
+</root>

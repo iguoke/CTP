@@ -1,0 +1,5 @@
+F:\myc#\CTP\t\t\bin\Debug\t.exe
+F:\myc#\CTP\t\t\bin\Debug\t.pdb
+F:\myc#\CTP\t\t\obj\x86\Debug\t.exe
+F:\myc#\CTP\t\t\obj\x86\Debug\t.pdb
+F:\myc#\CTP\t\t\obj\x86\Debug\ResolveAssemblyReference.cache

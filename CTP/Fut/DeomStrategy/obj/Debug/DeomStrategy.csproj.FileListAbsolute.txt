@@ -1,0 +1,11 @@
+F:\myc#\CTP\Fut\DeomStrategy\bin\Debug\DeomStrategy.dll
+F:\myc#\CTP\Fut\DeomStrategy\bin\Debug\DeomStrategy.pdb
+F:\myc#\CTP\Fut\DeomStrategy\bin\Debug\Fut.dll
+F:\myc#\CTP\Fut\DeomStrategy\bin\Debug\Fut.pdb
+F:\myc#\CTP\Fut\DeomStrategy\obj\Debug\DeomStrategy.dll
+F:\myc#\CTP\Fut\DeomStrategy\obj\Debug\DeomStrategy.pdb
+F:\myc#\CTP\Fut\DeomStrategy\bin\Debug\CTPAPI.dll
+F:\myc#\CTP\Fut\DeomStrategy\bin\Debug\CTPAPI.pdb
+F:\myc#\CTP\Fut\DeomStrategy\obj\Debug\ResolveAssemblyReference.cache
+F:\myc#\CTP\lib\DeomStrategy.dll
+F:\myc#\CTP\lib\DeomStrategy.pdb

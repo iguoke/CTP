@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="MdApi">
+</Property><Property Name="解决方案文件" Value="F:\量化交易\CTP\ctp封装c#\CTP接口(海风)2.0\MdApi\MdApi.sln">
+</Property><Property Name="Date" Value="2014年1月14日">
+</Property><Property Name="Time" Value="14:10">
+</Property></Properties><Event ErrorLevel="0" Project="MdApi" Source="MdApi.vcproj" Description="Converting project file 'F:\量化交易\CTP\ctp封装c#\CTP接口(海风)2.0\MdApi\MdApi.vcproj'.">
+</Event><Event ErrorLevel="1" Project="MdApi" Source="MdApi.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="MdApi" Source="MdApi.vcproj" Description="MSB8012: $(TargetPath) ('F:\量化交易\CTP\ctp封装c#\CTP接口(海风)2.0\MdApi\..\ApiDebugC+\MdApi.dll') does not match the Linker's OutputFile property value '..\ApiDebugC+\MdApi.dll' ('F:\量化交易\CTP\ctp封装c#\CTP接口(海风)2.0\ApiDebugC+\MdApi.dll') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="MdApi" Source="MdApi.vcproj" Description="Done converting to new project file 'F:\量化交易\CTP\ctp封装c#\CTP接口(海风)2.0\MdApi\MdApi.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="MdApi" Source="MdApi.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="MdApi.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="MdApi.sln" Description="Converted">
+</Event></UpgradeLog>

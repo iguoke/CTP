@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+  <broker BrokerID="66666" BrokerName="中信期货">
+    <Server>
+      <Trade>
+        <item>ctpfz1-front1.citicsf.com:51205</item>
+      </Trade>
+      <MarketData> 
+	<item>ctpfz1-front1.citicsf.com:51213</item>		
+      </MarketData>
+    </Server>
+    <invostors>
+      <invostor>
+        <id>896419</id>
+        <pwssword>271131</pwssword>
+      </invostor>
+    </invostors>
+  </broker>
+  
+  <broker BrokerID="1032" BrokerName="永安期货（股指仿真）">
+    <Server>
+      <Trade>
+        <item>115.238.53.139:51205</item>
+      </Trade>
+      <MarketData>
+        <item>115.238.53.139:51213</item>
+      </MarketData>
+    </Server>
+    <invostors>
+      <invostor>
+        <id>202800042</id>
+        <pwssword>891026</pwssword>
+      </invostor>
+    </invostors>
+  </broker>
+</root>

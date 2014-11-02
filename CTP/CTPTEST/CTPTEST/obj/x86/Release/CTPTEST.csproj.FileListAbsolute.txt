@@ -1,0 +1,11 @@
+F:\myc#\CTP\CTPTEST\CTPTEST\bin\Release\CTPTEST.exe
+F:\myc#\CTP\CTPTEST\CTPTEST\bin\Release\CTPTEST.pdb
+F:\myc#\CTP\CTPTEST\CTPTEST\bin\Release\CTPAPI.pdb
+F:\myc#\CTP\CTPTEST\CTPTEST\obj\x86\Release\CTPTEST.Form1.resources
+F:\myc#\CTP\CTPTEST\CTPTEST\obj\x86\Release\CTPTEST.Properties.Resources.resources
+F:\myc#\CTP\CTPTEST\CTPTEST\obj\x86\Release\CTPTEST.exe
+F:\myc#\CTP\CTPTEST\CTPTEST\obj\x86\Release\CTPTEST.pdb
+F:\myc#\CTP\CTPTEST\CTPTEST\bin\Release\CTPAPI.dll
+F:\myc#\CTP\CTPTEST\CTPTEST\obj\x86\Release\ResolveAssemblyReference.cache
+F:\myc#\CTP\CTPTEST\CTPTEST\obj\x86\Release\GenerateResource.read.1.tlog
+F:\myc#\CTP\CTPTEST\CTPTEST\obj\x86\Release\GenerateResource.write.1.tlog

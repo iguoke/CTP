@@ -1,0 +1,20 @@
+LIBRARY dllmain  
+EXPORTS
+Connect
+Release
+Join
+ReqUserLogin
+ReqUserLogout
+SubMarketData
+UnSubscribeMarketData
+GetTradingDay
+
+RegOnRspUserLogin
+RegOnFrontConnected
+RegOnRspError
+RegOnHeartBeatWarning
+RegOnFrontDisconnected
+RegOnRspSubMarketData
+RegOnRspUnSubMarketData
+RegOnRtnDepthMarketData
+RegOnRspUserLogout
