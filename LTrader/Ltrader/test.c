@@ -8,14 +8,7 @@
 //g++ -w -o test test.c  threadpool.c -lpthread
 static pthread_rwlock_t rwlock;//读写锁对象
  int i=0;
-void showqueue(string e) 
-{
-  if (0==strcmp("",e.addr))
-  {
-   printf("%s",e.str);
 
-  }
-}
 void *writeA(void *arg)
 {
  while(true)
@@ -23,7 +16,7 @@ void *writeA(void *arg)
    pthread_rwlock_wrlock(&rwlock);
    Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
    //printf("this is press write: i=%d\n",i);
-   Print(queue,"","AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwriteA->i=%d",i++);
+   Print(queue,"Log.txt","writeA->i=%d",i++);
 
   //printf("aaa\n");
  //exit(0);
@@ -38,7 +31,8 @@ void *writeB(void *arg)
    pthread_rwlock_wrlock(&rwlock);
    Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
    //printf("this is press write: i=%d\n",i);
-   Print(queue,"","writeBBBBBBBBBBBBBBBBBBBB->i=%d",i++);
+   Print(queue,"Log.txt","writeB->i=%d",i++);
+
 
    pthread_rwlock_unlock(&rwlock); 
  }
@@ -51,7 +45,7 @@ void *writeC(void *arg)
    pthread_rwlock_wrlock(&rwlock);
    Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
    //printf("this is press write: i=%d\n",i);
-   Print(queue,"","CCCCCCCwriteC->i=%d",i++);
+   Print(queue,"Log.txt","writeC->i=%d",i++);
 
    pthread_rwlock_unlock(&rwlock); 
  }
@@ -64,8 +58,8 @@ void *read(void *arg)
  {
   while(queue->length>0)
   {
-    pthread_rwlock_rdlock(&rwlock);
-    printf("%s",PopQueue((*queue))); 
+    pthread_rwlock_rdlock(&rwlock); 
+    showqueue(PopQueue((*queue))); 
     pthread_rwlock_unlock(&rwlock); 
   }
  }
@@ -74,7 +68,7 @@ int main()
 {
   Q_TYPE(string) outstring;
   CreateQueue(outstring,string );
-  threadpool_t *thp = threadpool_create(3,100,20);
+  threadpool_t *thp = threadpool_create(5,100,20);
   printf("pool inited");
 	/*int *num = (int *)malloc(sizeof(int)*20);
 	for (int i=0;i<10;i++)
@@ -84,15 +78,15 @@ int main()
 		threadpool_add(thp,process,(void*)&num[i]);
 	}*/	
   threadpool_add(thp,read,(void*)&outstring);
- for (int j=0;j<10;j++)
+ //for (int j=0;j<10;j++)
  {
 //  threadpool_add(thp,read,(void*)&outstring);
   threadpool_add(thp,writeC,(void*)&outstring);
-  sleep(10);
+  //sleep(10);
   threadpool_add(thp,writeB,(void*)&outstring);
-  sleep(10);
+ // sleep(10);
   threadpool_add(thp,writeA,(void*)&outstring);
-  sleep(10);
+  //sleep(10);
  } 
  sleep(10);
   threadpool_destroy(thp);

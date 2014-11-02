@@ -1,5 +1,22 @@
 #include "Globals.h"
-
+void showqueue(string e) 
+{
+  if (0==strcmp("",e.addr))
+  {
+   printf("%s",e.str);
+  }
+  else
+  {
+    FILE *fp;
+    if((fp=fopen(e.addr,"a+"))!=NULL)
+    {
+     fputs(e.str,fp);
+   //  printf("%s %s",e.addr,e.str);  
+    }
+    //printf("%s\n",e.addr);
+    fclose(fp);
+  }
+}
 void Print(Q_TYPE(string) *str,const char *addr,const char *fmt,...)
 {
 int i=0;
@@ -9,14 +26,15 @@ int i=0;
  lt=time(NULL);
  struct tm *timer=localtime(&lt);
  string newstr;
- char buf[sizeof(addr)]={0};
- memmove(buf,addr,sizeof(addr));
+ char buf[strlen(addr)];
+ memmove(buf,addr,strlen(addr));
  newstr.addr=buf;
  //memmove(newstr.formt,fmt,sizeof(fmt));
  char buffer[256]={0};
  char bufstring[2048]={0};
-//sscanf(1900+timer->tm_year,timer->tm_mon,timer->tm_mday,timer->tm_wday,timer->tm_hour,timer->tm_min,timer->tm_sec,"%d.%d.%d (%d) %d:%d:%d-> ",buffer);
-//strcat(newstr.str,buffer);
+sprintf(buffer,"%d.%d.%d (%d) %d:%d:%d-> ",1900+timer->tm_year,timer->tm_mon+1,timer->tm_mday,timer->tm_wday,timer->tm_hour,timer->tm_min,timer->tm_sec);
+strcat(bufstring,buffer);
+//printf("%s\n",bufstring);
  for(i=0;fmt[i]!='\0';i++) 
  {
   if(fmt[i]=='%')
