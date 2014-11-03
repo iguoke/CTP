@@ -6,21 +6,17 @@
 //gcc -w threadpool.cc -o thread -lpthread
 //gcc src.c -std=c99 -o src
 //g++ -w -o test test.c  threadpool.c -lpthread
-static pthread_rwlock_t rwlock;//读写锁对象
+Q_TYPE(string) outstring;
+extern  pthread_rwlock_t rwlock;//读写锁对象
  int i=0;
-
 void *writeA(void *arg)
 {
  while(true)
  {
-   pthread_rwlock_wrlock(&rwlock);
+   //pthread_rwlock_wrlock(&rwlock);
    Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
-   //printf("this is press write: i=%d\n",i);
    Print(queue,"Log.txt","writeA->i=%d",i++);
-
-  //printf("aaa\n");
- //exit(0);
-   pthread_rwlock_unlock(&rwlock); 
+   //pthread_rwlock_unlock(&rwlock); 
  }
  
 }
@@ -28,13 +24,10 @@ void *writeB(void *arg)
 {
  while(true)
  {
-   pthread_rwlock_wrlock(&rwlock);
+   //pthread_rwlock_wrlock(&rwlock);
    Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
-   //printf("this is press write: i=%d\n",i);
    Print(queue,"Log.txt","writeB->i=%d",i++);
-
-
-   pthread_rwlock_unlock(&rwlock); 
+   //pthread_rwlock_unlock(&rwlock); 
  }
  
 }
@@ -42,12 +35,12 @@ void *writeC(void *arg)
 {
  while(true)
  {
-   pthread_rwlock_wrlock(&rwlock);
+   //pthread_rwlock_wrlock(&rwlock);
    Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
    //printf("this is press write: i=%d\n",i);
-   Print(queue,"Log.txt","writeC->i=%d",i++);
+   Print(queue,"","writeC->i=%d",i++);
 
-   pthread_rwlock_unlock(&rwlock); 
+   //pthread_rwlock_unlock(&rwlock); 
  }
  
 }
@@ -56,7 +49,7 @@ void *read(void *arg)
  Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
  while(true)
  {
-  while(queue->length>0)
+  while(queue->front!=queue->rear)
   {
     pthread_rwlock_rdlock(&rwlock); 
     showqueue(PopQueue((*queue))); 
@@ -64,9 +57,10 @@ void *read(void *arg)
   }
  }
 }
+
 int main()
 {
-  Q_TYPE(string) outstring;
+  
   CreateQueue(outstring,string );
   threadpool_t *thp = threadpool_create(5,100,20);
   printf("pool inited");
@@ -83,9 +77,9 @@ int main()
 //  threadpool_add(thp,read,(void*)&outstring);
   threadpool_add(thp,writeC,(void*)&outstring);
   //sleep(10);
-  threadpool_add(thp,writeB,(void*)&outstring);
+  //threadpool_add(thp,writeB,(void*)&outstring);
  // sleep(10);
-  threadpool_add(thp,writeA,(void*)&outstring);
+  //threadpool_add(thp,writeA,(void*)&outstring);
   //sleep(10);
  } 
  sleep(10);

@@ -1,4 +1,8 @@
 #include "Globals.h"
+#include "threadpool.h"
+Q_TYPE(string) outstring;
+static pthread_rwlock_t rwlock;//读写锁对象
+int i=0;
 void showqueue(string e) 
 {
   if (0==strcmp("",e.addr))
@@ -11,15 +15,14 @@ void showqueue(string e)
     if((fp=fopen(e.addr,"a+"))!=NULL)
     {
      fputs(e.str,fp);
-   //  printf("%s %s",e.addr,e.str);  
     }
-    //printf("%s\n",e.addr);
     fclose(fp);
   }
 }
 void Print(Q_TYPE(string) *str,const char *addr,const char *fmt,...)
 {
-int i=0;
+  pthread_rwlock_wrlock(&rwlock);
+ int i=0;
  va_list argp;
  va_start(argp,fmt);
  time_t lt; 
@@ -29,17 +32,14 @@ int i=0;
  char buf[strlen(addr)];
  memmove(buf,addr,strlen(addr));
  newstr.addr=buf;
- //memmove(newstr.formt,fmt,sizeof(fmt));
  char buffer[256]={0};
  char bufstring[2048]={0};
 sprintf(buffer,"%d.%d.%d (%d) %d:%d:%d-> ",1900+timer->tm_year,timer->tm_mon+1,timer->tm_mday,timer->tm_wday,timer->tm_hour,timer->tm_min,timer->tm_sec);
 strcat(bufstring,buffer);
-//printf("%s\n",bufstring);
  for(i=0;fmt[i]!='\0';i++) 
  {
   if(fmt[i]=='%')
    {
-    //printf("in");
     i++;
     switch(fmt[i]) 
     {
@@ -52,10 +52,8 @@ strcat(bufstring,buffer);
       break;
     case 's': 
       strcat(bufstring,va_arg(argp,char*));
-      //fputs(va_arg(argp,char*),stdout);
       break;
     case 'f':
-     //printf("%.1f\n",va_arg(argp,double));
      sprintf(buffer,"%.2f",va_arg(argp,double));
      strcat(bufstring,buffer);
      break;
@@ -68,38 +66,94 @@ strcat(bufstring,buffer);
   {
    sprintf(buffer,"%c",fmt[i]);
    strcat(bufstring,buffer);
-   //putchar(fmt[i]);
-   //printf("%c",fmt[i]);
    }
   }
-   //sprintf(buffer,"%c",fmt[i]);
    strcat(bufstring,"\n");
    newstr.str=bufstring;
-  //printf("%s\n",newstr.addr);
+  //pthread_rwlock_wrlock(&rwlock);
   PushQueue((*str),string,newstr);
-  //printf("hahhh\n");
+  //pthread_rwlock_unlock(&rwlock);
   va_end(argp);
+  pthread_rwlock_unlock(&rwlock);
 }
-/*void showqueue(string e) 
+void OnFrontConnected(void (*fun)())
 {
-  if (0==strcmp(e.addr,""))
+  (*fun)();
+}
+void CTPOnFrontConnected()
+{
+  //Print();
+}
+void *writeA(void *arg)
+{
+ while(true)
+ {
+   Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
+   Print(queue,"A.txt","writeA->i=%d",i++);
+ }
+}
+void *writeB(void *arg)
+{
+ while(true)
+ {
+   Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
+   Print(queue,"B.txt","writeB->i=%d",i++);
+ }
+}
+void *writeC(void *arg)
+{
+ while(true)
+ {
+   Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
+   Print(queue,"","writeC->i=%d",i++);
+ }
+}
+void *read(void *arg)
+{
+ Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
+ while(true)
+ {
+  if(queue->front!=queue->rear)
   {
-   printf("%s",e.str);
-
+    pthread_rwlock_rdlock(&rwlock); 
+   showqueue(PopQueue((*queue))); 
+    pthread_rwlock_unlock(&rwlock); 
   }
+ }
 }
-*/
-/*int  main()
-{ 
-  Q_TYPE(string) outstring;
-  CreateQueue(outstring,string);  
- //Print("","---- start ----\n"); 
-  double mm=2358; 
-  Print(&outstring,"","std:%d %s %f",3,"hello word!",mm);
+int main()
+{
+ pthread_rwlock_init(&rwlock,NULL); 
+  CreateQueue(outstring,string );
+  threadpool_t *thp = threadpool_create(5,100,20);
+  printf("pool inited");
+	/*int *num = (int *)malloc(sizeof(int)*20);
+	for (int i=0;i<10;i++)
+	{
+		num[i]=i;
+		printf("add task %d\n",i);
+		threadpool_add(thp,process,(void*)&num[i]);
+	}*/	
+ //for (int j=0;j<5;j++)
+ {
+  threadpool_add(thp,read,(void*)&outstring);
+  threadpool_add(thp,writeC,(void*)&outstring);
+  threadpool_add(thp,writeB,(void*)&outstring);
+  threadpool_add(thp,writeA,(void*)&outstring);
+ } 
+  threadpool_add(thp,read,(void*)&outstring);
+ sleep(10);
+  threadpool_destroy(thp);
+  
+  //Print(outstring,"","%s","hello\n");
+  //Print(outstring,"","%c",'A'); 
+  //PushQueue(outstring,string,"hello");
+  //PushQueue(outstring,string,"wang xue hong\n");
+  //double mm=2358; 
+  //Print(&outstring,"","std:%f",mm);
   //Print("log.txt","std:%d %s %f",3,"hello word!",mm);
- //gcc -w threadpool.cc -o thread -lpthread
-  TraverseQueue(outstring,string,showqueue);
-  DestroyQueue(outstring);
- return 0;
+  //printf("string %s",PopQueue(outstring));
+  //TraverseQueue(outstring,string,showqueue);
+  DestroyQueue(outstring); 
+   return 0;
 }
-*/
