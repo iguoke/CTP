@@ -22,8 +22,8 @@ struct Account
  double PreMargin;//上次占用的保证金: 前一交易日交易结算单中（保证金占用） 
  double Risk;//风险=持仓/权益 
  double MarketValue;// 证券市值  
- };
-typedef Account account;
+ }; 
+typedef Account Account;
  //手续费
 struct CommissionRate 
 {
@@ -57,7 +57,7 @@ struct MarginRate
   };
 typedef MarginRate MarginRate;
 //Tick 
-struct tick
+struct Tick
 {
   EnumAPI Api;//平台
   EnumMarket Market;//市场结构 
@@ -81,8 +81,9 @@ struct tick
   double LowerLimitPrice ;// 跌停板价 
   double PreDelta ;// 昨虚实度 
   double CurrDelta ;//今虚实度 
-  double UpdateTime ;//最后修改时间 
-  int  UpdateMillisec ;//最后修改毫秒 
+   Time   UpdateTime ;//最后修改时间 
+  //double UpdateTime ;//最后修改时间 
+  //int  UpdateMillisec ;//最后修改毫秒 
   double BidPrice1 ;//申买价一 
   int BidVolume1;// 申买量一 
   double  AskPrice1;// 申卖价一 
@@ -106,19 +107,19 @@ struct tick
   double AveragePrice ;//当日均价 
   char *ActionDay ;//业务日期 
 };
-typedef tick tick;
+typedef Tick Tick;
 //商品品种
 struct Product
 {
   EnumAPI Api;//平台
   EnumMarket Market;//市场结构
   EnumExchange Exchange;//交易所
-  bool IsArbitrage; //是否为套利品种 郑商所一些SP开头的品种时套利的  
+  bool IsArbitrage 是否为套利品种 郑商所一些SP开头的品种时套利的  
   double DropLimit;// 跌停价  
   char *ExpireDate ;//到期日  
   char *InstrumentID;// 合约代码  
   double LastPrice ;//最新价格  
-  tick LastTick ;//最新Tick  
+  Tick LastTick ;//最新Tick  
   double LongMarginRatio ;//多头保证金率  
   EnumLifeStatus LifeStatus ;//合约生命周期状态  
   int MaxLimitOrderVolume;// 限价单最大下单量  
@@ -134,5 +135,42 @@ struct Product
   int VolumeMultiple;// 合约数量乘数  
 };
 typedef Product Product;
-#endif
+struct AccountInfo
+{
+  EnumAPI Api;//平台
+  char *AccountID;
+  char *BrokerID;
+  char *PassWoed;
+};
+typedef AccountInfo AccountInfo;
+typedef tm Time;
+struct Bar 
+{
+  Time BeginTime;
+  double Close;
+  Time EndTime;
+  double High;
+  bool isComplete;
+  double Low;
+  double Open;
+  double OpenInterest;
+  double PreClose;
+  double Turnover;
+  double Volume;
+};
+typedef Bar Bar;
+struct Exchange
+{
+  EnumAPI Api;//平台
+  Time BaseTime;
+  Time CloseTime;
+  char *ExchangeID;
+  char *ExchangeName;
+  EnumExchange enumExchange;
+  EnumMarket  Market;
+  Time OpenTime;
+  Time DiffTime;
+};
+typedef Exchange Exchange;
 
+#endif

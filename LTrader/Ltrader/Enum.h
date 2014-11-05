@@ -250,12 +250,12 @@ typedef enum EnumTriggerMode
   Barer
 } EnumTriggerMode;
 //市场状态 
-typedef enum MarketState
+typedef enum EnumMarketState
 {
   Auction,//集合竞价 0  
   Continuous,//连续竞价 1  
   MiddayRest,//午间休市 2  
   Closed//闭市 3  
-} MarketState;
+} EnumMarketState;
 
 #endif
