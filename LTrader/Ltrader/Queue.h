@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "Macros.h"
 #include <string.h>
-#define Q_TYPE(_ET) Queue_##_ET
+/*#define Q_TYPE(_ET) Queue_##_ET
 //#define Q_DEFINE(ET,queue)
 #define Q_TYPE_DEFINE(ET) typedef struct{ET *base;int front,rear,length;size_t size;} Queue_##ET;
 
@@ -19,7 +19,7 @@
 #define PopQueue(name)({if(name.front==name.rear){fprintf(stderr,"can't Pop,Queue is empty!\n");exit(EXIT_FAILURE);}name.front=(name.front+1)%name.size;name.length--;name.base[name.front];})
  
 #define TraverseQueue(name,et,funname) void (*vi)(et); for(int TraverseQueue=1;TraverseQueue<=name.length;TraverseQueue++){funname(name.base[(name.front+TraverseQueue)%name.size]);}
-
+*/
 /*
 typedef  int ElemType ;
 typedef struct

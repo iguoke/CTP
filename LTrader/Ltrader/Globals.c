@@ -1,6 +1,6 @@
 #include "Globals.h"
 #include "threadpool.h"
-Q_TYPE(string) outstring;
+/*Q_TYPE(string) outstring;
 static pthread_rwlock_t rwlock;//读写锁对象
 int i=0;
 void showqueue(string e) 
@@ -80,9 +80,9 @@ void OnFrontConnected(void (*fun)())
 {
   (*fun)();
 }
-void CTPOnFrontConnected()
+void CTPMDOnFrontConnected()
 {
-  //Print();
+  //Print(outstring,"","CTPONMDFrontconnect");
 }
 void *writeA(void *arg)
 {
@@ -127,13 +127,13 @@ int main()
   CreateQueue(outstring,string );
   threadpool_t *thp = threadpool_create(5,100,20);
   printf("pool inited");
-	/*int *num = (int *)malloc(sizeof(int)*20);
+	int *num = (int *)malloc(sizeof(int)*20);
 	for (int i=0;i<10;i++)
 	{
 		num[i]=i;
 		printf("add task %d\n",i);
 		threadpool_add(thp,process,(void*)&num[i]);
-	}*/	
+	}	
  //for (int j=0;j<5;j++)
  {
   threadpool_add(thp,read,(void*)&outstring);
@@ -156,4 +156,4 @@ int main()
   //TraverseQueue(outstring,string,showqueue);
   DestroyQueue(outstring); 
    return 0;
-}
+}*/

@@ -1,5 +1,5 @@
 #include "Queue.h"
-void showqueue(int e) 
+/*void showqueue(int e) 
 {
   printf("elem= %d; ",e);
 }
@@ -30,4 +30,4 @@ int main()
   DestroyQueue(queue);
   DestroyQueue(queuec);
 return 0;
-}
+}*/

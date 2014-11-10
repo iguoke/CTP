@@ -10,11 +10,11 @@
 
 #ifndef __THREADPOOL_H_
 #define __THREADPOOL_H_
-#ifdef NTHREADLOG
+/*#ifdef NTHREADLOG
 #define ThreadLog(M, ...)
 #else
 #define ThreadLog(M, ...) fprintf(stderr, "NTHREADLOG %s:%d: " M "\n", __FILE__, __LINE__, ##__VA_ARGS__)//stdout
-#endif
+#endif*/
 #include <stdlib.h>
 #include <pthread.h>
 #include <unistd.h>

@@ -1,4 +1,5 @@
 #include "Io.h"
+
 /*void Print(const char *addr,const char *fmt,...)
 {
  int i=0;
@@ -92,12 +93,19 @@ if(""==addr)
 va_end(argp); 
 }*/
 
-/*int  main()
+int  main()
 {
-  Print("","---- start ----\n"); 
+  StringQ *q;
+  createStringQ(q);
+  string st;
+  //st.addr="";
+  st.str="hello";
+  //pushStringQ(q,st);
+  //st.str="hi";
+  //pushStringQ(q,st);
+  //printf("%s",popStringQ(q).str);
+  //destroyStringQ(q);
   double mm=2358; 
-  Print("","std:%d %s %f",3,"hello word!",mm);
-  Print("log.txt","std:%d %s %f",3,"hello word!",mm);
  //gcc -w threadpool.cc -o thread -lpthread
  return 0;
-}*/
+}

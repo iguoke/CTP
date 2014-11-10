@@ -1,7 +1,8 @@
 #ifndef __STRUCT_H_
 #define __STRUCT_H_
 #include "Enum.h"
-
+#include<time.h>
+typedef tm Time;
 //交易账户
 struct Account
 {
@@ -114,12 +115,12 @@ struct Product
   EnumAPI Api;//平台
   EnumMarket Market;//市场结构
   EnumExchange Exchange;//交易所
-  bool IsArbitrage 是否为套利品种 郑商所一些SP开头的品种时套利的  
+  bool IsArbitrage ;//是否为套利品种 郑商所一些SP开头的品种时套利的  
   double DropLimit;// 跌停价  
   char *ExpireDate ;//到期日  
   char *InstrumentID;// 合约代码  
   double LastPrice ;//最新价格  
-  Tick LastTick ;//最新Tick  
+  //Tick LastTick ;//最新Tick  
   double LongMarginRatio ;//多头保证金率  
   EnumLifeStatus LifeStatus ;//合约生命周期状态  
   int MaxLimitOrderVolume;// 限价单最大下单量  
@@ -143,7 +144,7 @@ struct AccountInfo
   char *PassWoed;
 };
 typedef AccountInfo AccountInfo;
-typedef tm Time;
+
 struct Bar 
 {
   Time BeginTime;

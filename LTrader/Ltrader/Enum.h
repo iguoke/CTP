@@ -42,7 +42,7 @@ typedef enum EnumMarket
 //BarType
 typedef enum EnumBarType
 {
- Tick,
+ Ticks,
  Second,
  Minute, 
  Hour, 
