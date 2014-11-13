@@ -4,8 +4,19 @@
 #include "Queue.h"
 #include <stdlib.h>
 #include <stdio.h>
+typedef struct 
+{
+  CThostFtdcMdApi *api;
+  CThostFtdcMdSpi *spi;
+} CtpApi;
+CtpApi ctpapi;
+StringQ stringq;
 void showqueue(string e);
 void Print(StringQ *q,const char *addr,const char *fmt,...);
 void OnFrontConnected(void (*fun)());
 void CTPMDOnFrontConnected();
+
+void CreateApi(void *api,void (*fun)(void *));
+void CTPCreateApi(CtpApi *);
+
 #endif 

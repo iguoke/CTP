@@ -2,6 +2,7 @@
 #include "threadpool.h"
 //static pthread_rwlock_t rwlock;//读写锁对象
 int i=0;
+
 void showqueue(string e) 
 {
   if (0==strcmp("",e.addr))
@@ -81,7 +82,16 @@ void OnFrontConnected(void (*fun)())
 }
 void CTPMDOnFrontConnected()
 {
-  //Print(outstring,"","CTPONMDFrontconnect");
+  Print(&stringq,"","CTPMD Connected!");
+}
+void CreateApi(void *api,void (*fun)(void *))
+{
+  (*fun)(api);
+}
+void CTPCreateApi(CtpApi *ctpapi)
+{
+  ctpapi->api = CThostFtdcMdApi::CreateFtdcMdApi("./log/");
+  ctpapi->spi = new CtpMd();
 }
 void *writeA(void *arg)
 {
@@ -120,10 +130,11 @@ void *read(void *arg)
   }
  }
 }
+//g++ Globals.c Queue.c threadpool.c -lpthread -o t
 int main()
 {
-  StringQ q;
-  createStringQ(&q);
+
+  createStringQ(&stringq);
   threadpool_t *thp = threadpool_create(5,100,20);
   printf("pool inited");
 	/*int *num = (int *)malloc(sizeof(int)*20);
@@ -135,23 +146,13 @@ int main()
 	}*/	
  //for (int j=0;j<5;j++)
  {
-  //threadpool_add(thp,read,(void*)&q);
-  threadpool_add(thp,writeC,(void*)&q);
-  threadpool_add(thp,writeB,(void*)&q);
-  threadpool_add(thp,writeA,(void*)&q);
+  threadpool_add(thp,writeC,(void*)&stringq);
+  threadpool_add(thp,writeB,(void*)&stringq);
+  threadpool_add(thp,writeA,(void*)&stringq);
  } 
-  threadpool_add(thp,read,(void*)&q);
+  threadpool_add(thp,read,(void*)&stringq);
   sleep(10);
   threadpool_destroy(thp);
-  
-  //Print(outstring,"","%s","hello\n");
-  //Print(outstring,"","%c",'A'); 
-  //PushQueue(outstring,string,"hello");
-  //PushQueue(outstring,string,"wang xue hong\n");
-  //double mm=2358; 
-  //Print(&outstring,"","std:%f",mm);
-  //Print("log.txt","std:%d %s %f",3,"hello word!",mm);
-  //printf("string %s",PopQueue(outstring));
-  //TraverseQueue(outstring,string,showqueue); 
+  destroyStringQ(&stringq);  
    return 0;
 }
