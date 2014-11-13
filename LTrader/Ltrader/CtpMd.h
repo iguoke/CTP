@@ -1,8 +1,20 @@
 #ifndef __CTPMD_H__
 #define __CTPMD_H__
-#include "Globals.h"
 #include "ThostFtdcMdApi.h"
-class CTPMD:public CThostFtdcMdSpi
+typedef struct 
+{
+  CThostFtdcMdApi *api;
+  CThostFtdcMdSpi *spi;
+} CtpMdApi;
+
+void CtpMdOnFront();
+void CtpMdOnLogin(void *);
+void CtpMdOnMarket(void *);
+void CtpMdCreateApi(void *);
+void CtpMdConnect(void *,char *);
+void CtpMdLogin(void *,char*, char*, char*);
+void SubMarketData(void*,char*);
+class CtpMd:public CThostFtdcMdSpi
 {
 public:
 	///µ±¿Í»§¶ËÓëœ»Ò×ºóÌšœšÁ¢ÆðÍšÐÅÁ¬œÓÊ±£š»¹ÎŽµÇÂŒÇ°£©£¬žÃ·œ·š±»µ÷ÓÃ¡£
@@ -23,7 +35,7 @@ public:
 	
 
 	///µÇÂŒÇëÇóÏìÓŠ
-	virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+	virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
 	///µÇ³öÇëÇóÏìÓŠ
 	virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
@@ -38,7 +50,6 @@ public:
 	virtual void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
 
 	///Éî¶ÈÐÐÇéÍšÖª
-	virtual void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {};
+	virtual void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData);
 };
-
 #endif

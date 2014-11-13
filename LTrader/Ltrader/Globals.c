@@ -1,8 +1,5 @@
 #include "Globals.h"
-#include "threadpool.h"
 //static pthread_rwlock_t rwlock;//读写锁对象
-int i=0;
-
 void showqueue(string e) 
 {
   if (0==strcmp("",e.addr))
@@ -76,83 +73,32 @@ strcat(bufstring,buffer);
    va_end(argp);
    pthread_rwlock_unlock(&(*q).rwlock);
 }
-void OnFrontConnected(void (*fun)())
+void OnFront(void (*fun)())
 {
   (*fun)();
 }
-void CTPMDOnFrontConnected()
+void OnLogin(void *acc,void(*fun)(void*))
 {
-  Print(&stringq,"","CTPMD Connected!");
+  (*fun)(acc);
+}
+void OnMarket(void *marketdata,void(*fun)(void*))
+{
+  (*fun)(marketdata);
 }
 void CreateApi(void *api,void (*fun)(void *))
 {
+ //printf("hhhhhhhh");
   (*fun)(api);
 }
-void CTPCreateApi(CtpApi *ctpapi)
+void Connect(void *api,char *s,void (*fun)(void *,char *))
 {
-  ctpapi->api = CThostFtdcMdApi::CreateFtdcMdApi("./log/");
-  ctpapi->spi = new CtpMd();
+  (*fun)(api,s);
 }
-void *writeA(void *arg)
+void Login(void *api,char* pInvestor, char* pPwd, char* pBroker,void (*fun)(void *,char* pInvestor, char* pPwd, char* pBroker))
 {
- while(true)
- {
-    StringQ * queue=( StringQ *) arg;
-   Print(queue,"A.txt","writeA->i=%d",i++);
- }
+  (*fun)(api,pInvestor,pPwd,pBroker);
 }
-void *writeB(void *arg)
+void SubMarketData(void *api,char *inst,void (*fun)(void*,char *))
 {
- while(true)
- {
-    StringQ * queue=( StringQ *) arg;
-   Print(queue,"B.log","writeB->i=%d",i++);
- }
-}
-void *writeC(void *arg)
-{
- while(true)
- {
-   StringQ * queue=(StringQ *) arg;
-   Print(queue,"","writeC->i=%d",i++);
- }
-}
-void *read(void *arg)
-{
- StringQ * queue=(StringQ *) arg;
- while(true)
- {
-  if(queue->front!=queue->rear)
-  {
-    pthread_rwlock_rdlock(&(*queue).rwlock); 
-    showqueue(popStringQ(queue)); 
-    pthread_rwlock_unlock(&(*queue).rwlock); 
-  }
- }
-}
-//g++ Globals.c Queue.c threadpool.c -lpthread -o t
-int main()
-{
-
-  createStringQ(&stringq);
-  threadpool_t *thp = threadpool_create(5,100,20);
-  printf("pool inited");
-	/*int *num = (int *)malloc(sizeof(int)*20);
-	for (int i=0;i<10;i++)
-	{
-		num[i]=i;
-		printf("add task %d\n",i);
-		threadpool_add(thp,process,(void*)&num[i]);
-	}*/	
- //for (int j=0;j<5;j++)
- {
-  threadpool_add(thp,writeC,(void*)&stringq);
-  threadpool_add(thp,writeB,(void*)&stringq);
-  threadpool_add(thp,writeA,(void*)&stringq);
- } 
-  threadpool_add(thp,read,(void*)&stringq);
-  sleep(10);
-  threadpool_destroy(thp);
-  destroyStringQ(&stringq);  
-   return 0;
+ (*fun)(api,inst);
 }

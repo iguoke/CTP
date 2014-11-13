@@ -28,6 +28,7 @@ void fullStringQ(StringQ *q);
 void pushStringQ(StringQ *q,string e);
 string popStringQ(StringQ *q);
 void traverseStringQ(StringQ *q,void (*fun)(string));
+void showqueue(string e);
 /*#define Q_TYPE(_ET) Queue_##_ET
 //#define Q_DEFINE(ET,queue)
 #define Q_TYPE_DEFINE(ET) typedef struct{ET *base;int front,rear,length;size_t size;} Queue_##ET;
