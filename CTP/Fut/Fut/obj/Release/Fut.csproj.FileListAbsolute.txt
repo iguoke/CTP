@@ -1,9 +1,0 @@
-F:\myc#\CTP\Fut\Fut\bin\Release\Fut.dll
-F:\myc#\CTP\Fut\Fut\bin\Release\Fut.pdb
-F:\myc#\CTP\Fut\Fut\bin\Release\CTPAPI.dll
-F:\myc#\CTP\Fut\Fut\bin\Release\CTPAPI.pdb
-F:\myc#\CTP\Fut\Fut\obj\Release\Fut.dll
-F:\myc#\CTP\Fut\Fut\obj\Release\Fut.pdb
-F:\myc#\CTP\lib\Fut.pdb
-F:\myc#\CTP\Fut\Fut\obj\Release\ResolveAssemblyReference.cache
-F:\myc#\CTP\lib\Fut.dll

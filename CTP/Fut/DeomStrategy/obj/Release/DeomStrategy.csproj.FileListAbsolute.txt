@@ -1,9 +1,0 @@
-F:\myc#\CTP\Fut\DeomStrategy\bin\Release\DeomStrategy.dll
-F:\myc#\CTP\Fut\DeomStrategy\bin\Release\DeomStrategy.pdb
-F:\myc#\CTP\Fut\DeomStrategy\bin\Release\CTPAPI.dll
-F:\myc#\CTP\Fut\DeomStrategy\bin\Release\CTPAPI.pdb
-F:\myc#\CTP\Fut\DeomStrategy\obj\Release\DeomStrategy.dll
-F:\myc#\CTP\Fut\DeomStrategy\obj\Release\DeomStrategy.pdb
-F:\myc#\CTP\lib\DeomStrategy.dll
-F:\myc#\CTP\lib\DeomStrategy.pdb
-F:\myc#\CTP\Fut\DeomStrategy\obj\Release\ResolveAssemblyReference.cache

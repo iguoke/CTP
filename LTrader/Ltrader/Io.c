@@ -93,19 +93,19 @@ if(""==addr)
 va_end(argp); 
 }*/
 
-int  main()
+/*int  main()
 {
-  StringQ *q;
-  createStringQ(q);
+  StringQ q;
+  createStringQ(&q);
   string st;
-  //st.addr="";
-  st.str="hello";
-  //pushStringQ(q,st);
-  //st.str="hi";
-  //pushStringQ(q,st);
-  //printf("%s",popStringQ(q).str);
-  //destroyStringQ(q);
-  double mm=2358; 
+  st.addr="";
+  st.str="hahahello";
+  pushStringQ(&q,st);
+  st.str="hi";
+  pushStringQ(&q,st);
+  printf("%s",popStringQ(&q).str);
+  destroyStringQ(&q);
+  //double mm=2358; 
  //gcc -w threadpool.cc -o thread -lpthread
  return 0;
-}
+}*/

@@ -340,7 +340,7 @@ bool is_thread_alive(pthread_t tid)
 }
 
 // for test
-void *process(void *arg)
+/*void *process(void *arg)
 {
    while(true)
   {	
@@ -367,4 +367,4 @@ int main()
 	sleep(10);
 	threadpool_destroy(thp);
 }
-
+*/

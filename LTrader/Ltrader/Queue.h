@@ -4,6 +4,30 @@
 #include <stdio.h>
 #include "Macros.h"
 #include <string.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include "time.h"
+#include "threadpool.h"
+typedef  struct
+{
+   char *str;
+   char *addr;
+   
+} string;
+typedef struct
+{
+  string *base;
+  int front,rear,length;
+  size_t size;
+  pthread_rwlock_t rwlock;
+} StringQ; 
+
+void createStringQ(StringQ *q);
+void destroyStringQ(StringQ *q);
+void fullStringQ(StringQ *q);
+void pushStringQ(StringQ *q,string e);
+string popStringQ(StringQ *q);
+void traverseStringQ(StringQ *q,void (*fun)(string));
 /*#define Q_TYPE(_ET) Queue_##_ET
 //#define Q_DEFINE(ET,queue)
 #define Q_TYPE_DEFINE(ET) typedef struct{ET *base;int front,rear,length;size_t size;} Queue_##ET;

@@ -1,9 +1,0 @@
-F:\myc#\CTP\FZtool\FZtool\bin\Debug\FZtool.exe
-F:\myc#\CTP\FZtool\FZtool\bin\Debug\FZtool.pdb
-F:\myc#\CTP\FZtool\FZtool\obj\x86\Debug\FZtool.Form1.resources
-F:\myc#\CTP\FZtool\FZtool\obj\x86\Debug\FZtool.Properties.Resources.resources
-F:\myc#\CTP\FZtool\FZtool\obj\x86\Debug\FZtool.exe
-F:\myc#\CTP\FZtool\FZtool\obj\x86\Debug\FZtool.pdb
-F:\myc#\CTP\FZtool\FZtool\obj\x86\Debug\ResolveAssemblyReference.cache
-F:\myc#\CTP\FZtool\FZtool\obj\x86\Debug\GenerateResource.read.1.tlog
-F:\myc#\CTP\FZtool\FZtool\obj\x86\Debug\GenerateResource.write.1.tlog

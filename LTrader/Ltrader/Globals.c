@@ -1,7 +1,6 @@
 #include "Globals.h"
 #include "threadpool.h"
-/*Q_TYPE(string) outstring;
-static pthread_rwlock_t rwlock;//读写锁对象
+//static pthread_rwlock_t rwlock;//读写锁对象
 int i=0;
 void showqueue(string e) 
 {
@@ -19,9 +18,9 @@ void showqueue(string e)
     fclose(fp);
   }
 }
-void Print(Q_TYPE(string) *str,const char *addr,const char *fmt,...)
+void Print(StringQ *q,const char *addr,const char *fmt,...)
 {
-  pthread_rwlock_wrlock(&rwlock);
+ pthread_rwlock_wrlock(&(*q).rwlock);
  int i=0;
  va_list argp;
  va_start(argp,fmt);
@@ -70,11 +69,11 @@ strcat(bufstring,buffer);
   }
    strcat(bufstring,"\n");
    newstr.str=bufstring;
-  //pthread_rwlock_wrlock(&rwlock);
-  PushQueue((*str),string,newstr);
-  //pthread_rwlock_unlock(&rwlock);
-  va_end(argp);
-  pthread_rwlock_unlock(&rwlock);
+   //pthread_rwlock_wrlock(&(*q).rwlock);
+   pushStringQ(q,newstr);
+   //pthread_rwlock_unlock(&(*q).rwlock);
+   va_end(argp);
+   pthread_rwlock_unlock(&(*q).rwlock);
 }
 void OnFrontConnected(void (*fun)())
 {
@@ -88,7 +87,7 @@ void *writeA(void *arg)
 {
  while(true)
  {
-   Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
+    StringQ * queue=( StringQ *) arg;
    Print(queue,"A.txt","writeA->i=%d",i++);
  }
 }
@@ -96,53 +95,53 @@ void *writeB(void *arg)
 {
  while(true)
  {
-   Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
-   Print(queue,"B.txt","writeB->i=%d",i++);
+    StringQ * queue=( StringQ *) arg;
+   Print(queue,"B.log","writeB->i=%d",i++);
  }
 }
 void *writeC(void *arg)
 {
  while(true)
  {
-   Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
+   StringQ * queue=(StringQ *) arg;
    Print(queue,"","writeC->i=%d",i++);
  }
 }
 void *read(void *arg)
 {
- Q_TYPE(string) * queue=(Q_TYPE(string) *) arg;
+ StringQ * queue=(StringQ *) arg;
  while(true)
  {
   if(queue->front!=queue->rear)
   {
-    pthread_rwlock_rdlock(&rwlock); 
-   showqueue(PopQueue((*queue))); 
-    pthread_rwlock_unlock(&rwlock); 
+    pthread_rwlock_rdlock(&(*queue).rwlock); 
+    showqueue(popStringQ(queue)); 
+    pthread_rwlock_unlock(&(*queue).rwlock); 
   }
  }
 }
 int main()
 {
- pthread_rwlock_init(&rwlock,NULL); 
-  CreateQueue(outstring,string );
+  StringQ q;
+  createStringQ(&q);
   threadpool_t *thp = threadpool_create(5,100,20);
   printf("pool inited");
-	int *num = (int *)malloc(sizeof(int)*20);
+	/*int *num = (int *)malloc(sizeof(int)*20);
 	for (int i=0;i<10;i++)
 	{
 		num[i]=i;
 		printf("add task %d\n",i);
 		threadpool_add(thp,process,(void*)&num[i]);
-	}	
+	}*/	
  //for (int j=0;j<5;j++)
  {
-  threadpool_add(thp,read,(void*)&outstring);
-  threadpool_add(thp,writeC,(void*)&outstring);
-  threadpool_add(thp,writeB,(void*)&outstring);
-  threadpool_add(thp,writeA,(void*)&outstring);
+  //threadpool_add(thp,read,(void*)&q);
+  threadpool_add(thp,writeC,(void*)&q);
+  threadpool_add(thp,writeB,(void*)&q);
+  threadpool_add(thp,writeA,(void*)&q);
  } 
-  threadpool_add(thp,read,(void*)&outstring);
- sleep(10);
+  threadpool_add(thp,read,(void*)&q);
+  sleep(10);
   threadpool_destroy(thp);
   
   //Print(outstring,"","%s","hello\n");
@@ -153,7 +152,6 @@ int main()
   //Print(&outstring,"","std:%f",mm);
   //Print("log.txt","std:%d %s %f",3,"hello word!",mm);
   //printf("string %s",PopQueue(outstring));
-  //TraverseQueue(outstring,string,showqueue);
-  DestroyQueue(outstring); 
+  //TraverseQueue(outstring,string,showqueue); 
    return 0;
-}*/
+}

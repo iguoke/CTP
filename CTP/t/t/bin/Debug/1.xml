@@ -1,8 +1,0 @@
-<album name="album1">
-  <Preview path="album1" extension="xpi" sizew="680" sizeh="474" totalpage="25">
-    <Page id="0" text="封面" bgimg="fm.xpi" sizew="680" sizeh="474" totalphoto="2">
-      <Photo id="0" x="0" y="0" minw="5029" minh="3504" pwidth="680" pheight="474" image="hard_cover_color.xpi" />
-      <Photo id="1" x="138" y="117" minw="3155" minh="1925" pwidth="406" pheight="243" image="sampleS.xpi">好能注明每句解释.谢谢..请勿复制粘贴</Photo>
-    </Page>
-  </Preview>
-</album>
