@@ -1,6 +1,6 @@
 #ifndef __dbg_h__
 #define __dbg_h__
-
+// this debgu from <learn c the hard way>
 #include <stdlib.h>
 //#include <stdio.h>
 #include <stdio.h>
